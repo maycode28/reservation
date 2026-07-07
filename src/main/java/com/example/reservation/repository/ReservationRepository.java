@@ -55,14 +55,14 @@ public class ReservationRepository {
     }
 
 
-    public Reservation save(Reservation reservation) {
+    public Reservation saveReservation(Reservation reservation) {
         reservation.setId(sequence.getAndIncrement());
         reservationMap.put(reservation.getPin(), reservation);
         return reservation;
     }
 
 
-    public Reservation findByPin(String pin) {
+    public Reservation findReservationByPin(String pin) {
         return reservationMap.get(pin);
     }
 
@@ -72,12 +72,12 @@ public class ReservationRepository {
     }
 
 
-    public Reservation peek() {
+    public Reservation peekWaitingReservation() {
         return waitingQueue.peek();
     }
 
 
-    public Reservation dequeue() {
+    public Reservation pollWaitingReservation() {
         return waitingQueue.poll();
     }
 
